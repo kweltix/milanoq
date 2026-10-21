@@ -1,0 +1,48 @@
+/* Optional enhancement only: no layout, typography, color or asset overrides.
+   Disable: MilanoMotion.setEnabled(false), persisted as milano.motion=off. */
+html[data-milano-motion] #A[data-mm-view] .rv {
+ opacity:1;translate:none;transition:none;transition-delay:0s;
+}
+html[data-milano-motion="on"] #A[data-mm-view] [data-mm="pending"] {
+ opacity:0;translate:0 16px;
+}
+html[data-milano-motion="on"] #A[data-mm-view] [data-mm="shown"] {
+ animation:milano-fade-up 650ms cubic-bezier(.22,.61,.36,1) var(--mm-delay,0ms) backwards;
+}
+@keyframes milano-fade-up {from{opacity:0;translate:0 16px}to{opacity:1;translate:0 0}}
+/* Existing flavor title reveal is replaced only at entry; taste-switch effects stay intact. */
+html[data-milano-motion="on"] .flavors .flavor-title-line > span {
+ transform:none;animation:none;
+}
+html[data-milano-motion="on"] #nv a:after {
+ right:0;transform:scaleX(0);transform-origin:left;transition:transform 250ms ease;
+}
+html[data-milano-motion="on"] #nv a:is(:hover,:focus-visible):after {transform:scaleX(1)}
+html[data-milano-motion="on"] #nv.o {animation:milano-menu-in 250ms ease backwards}
+@keyframes milano-menu-in {from{opacity:0;translate:0 -4px}to{opacity:1;translate:0 0}}
+html[data-milano-motion="on"] #A[data-mm-view] :is(.btn,.mk,.story-read) {
+ transition-property:scale,transform,box-shadow,border-color,background-color,color;
+ transition-duration:250ms;transition-timing-function:ease;
+}
+html[data-milano-motion="on"] #A[data-mm-view] :is(input,select,textarea) {
+ transition-property:border-color,box-shadow,background-color;transition-duration:250ms;
+}
+html[data-milano-motion="on"] #A[data-mm-view] details[open] > :not(summary) {
+ animation:milano-menu-in 250ms ease backwards;
+}
+@media (hover:hover) and (pointer:fine) {
+ html[data-milano-motion="on"] #A[data-mm-view] :is(.btn,.mk,.story-read):hover {scale:1.03;transform:none}
+ html[data-milano-motion="on"] #A[data-mm-view] :is(.bc,.story-card,.ab2-s>div,.ab2-c>div) {
+  transition-property:translate,border-color,box-shadow;transition-duration:300ms;transition-timing-function:ease;
+ }
+ html[data-milano-motion="on"] #A[data-mm-view] :is(.bc,.story-card,.ab2-s>div,.ab2-c>div):hover {translate:0 -5px}
+}
+.milano-motion-photo {position:absolute;inset:0;z-index:-2;pointer-events:none;animation:milano-photo-in 1100ms ease-out both}
+@keyframes milano-photo-in {from{transform:scale(.99);opacity:0}to{transform:scale(1);opacity:1}}
+/* Off is also safe halfway through an entrance. No hidden fallback content. */
+html[data-milano-motion="off"] #A [data-mm] {opacity:1;translate:none;animation:none}
+@media (prefers-reduced-motion:reduce) {
+ html[data-milano-motion] #A [data-mm] {opacity:1!important;translate:none!important;animation:none!important}
+ html[data-milano-motion] :is(#nv,#nv a:after,#A [data-mm-view],.milano-motion-photo) {animation:none!important;transition:none!important}
+ .milano-motion-photo {display:none}
+}

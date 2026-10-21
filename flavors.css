@@ -1,0 +1,76 @@
+/* Compact flavor scene; mobile uses a transform-only continuous belt. */
+@property --active-color{syntax:'<color>';inherits:true;initial-value:#e2b53e}
+.flavors{position:relative;padding:0;overflow:hidden;transition:--active-color .9s;background:linear-gradient(180deg,transparent 65%,#08090b 100%),radial-gradient(ellipse at 25% 65%,color-mix(in srgb,var(--active-color) 13%,transparent),transparent 65%),#08090b}
+.flavors::after{content:'ϟ';position:absolute;bottom:0;left:0;width:100%;height:28px;display:grid;place-items:center;color:#e7ba35;font:24px/1 Manrope,sans-serif;background:linear-gradient(90deg,transparent,#b9953655) left center/calc(50% - 28px) 1px no-repeat,linear-gradient(90deg,#b9953655,transparent) right center/calc(50% - 28px) 1px no-repeat;pointer-events:none}
+.flavors + #promo::after{content:'';position:absolute;inset:0 0 auto;height:clamp(70px,9vw,140px);background:linear-gradient(180deg,#08090b,rgba(8,9,11,.6) 40%,transparent);pointer-events:none;z-index:0}
+.flavors .energy-marquee{height:48px;margin:0;border-block:1px solid #ffffff12;display:flex;align-items:center;overflow:hidden}
+.flavors .energy-marquee>div{display:flex;width:max-content;flex:none;animation:flavor-marquee 46s linear infinite;gap:0}
+.flavors .marquee-group{display:flex;align-items:center;gap:24px;padding-right:24px;flex:none}
+.flavors .energy-marquee span{font-size:30px;line-height:1;white-space:nowrap;color:transparent;-webkit-text-stroke:1px #ffffff66}
+.flavors .energy-marquee .marquee-gold{color:transparent;-webkit-text-stroke-color:#e7ba35}
+.flavors .energy-marquee i{font-size:28px;color:#f4c72c}
+@keyframes flavor-marquee{to{transform:translateX(-50%)}}
+.flavors .flavors-wrap{padding-block:22px 46px}
+.flavors .flavors-head{margin:0 0 18px}
+.flavors .flavors-head h2{display:flex;flex-wrap:wrap;gap:0 .3em;font-size:clamp(27px,2.8vw,43px);line-height:1.2;margin:0}
+.flavors .flavor-title-line{overflow:hidden;display:inline-block}
+.flavors .flavor-title-line>span{display:block;transform:translateY(110%)}
+.flavors.flavors-ready .flavor-title-line>span{animation:flavor-title-in .9s cubic-bezier(.2,.8,.2,1) both}
+.flavors .flavor-title-line:last-child>span{color:transparent;-webkit-text-stroke:1px #e5b92c;animation-delay:.12s}
+.flavors .flavors-head p{margin:6px 0 0;padding:0;font-size:13px;color:#aaaeb4}
+.flavors .flavor-title-line:first-child>span{color:#f4f3ee;-webkit-text-stroke:0}
+@keyframes flavor-title-in{to{transform:translateY(0)}}
+.flavors .flavor-showcase{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px 36px;align-items:center;opacity:1;transform:none}
+.flavors .flavor-stage{position:relative;width:min(100%,calc(100svh - 360px),600px);height:auto;aspect-ratio:1;margin:auto;overflow:hidden;border:1px solid color-mix(in srgb,var(--active-color) 65%,#333);border-radius:28px;background:#090a0c;box-shadow:0 12px 50px color-mix(in srgb,var(--active-color) 12%,transparent);isolation:isolate}
+.flavors .flavor-stage img{display:block;width:100%;height:100%;object-fit:contain;position:absolute;inset:0;transform:none;filter:none;opacity:1;transition:none}
+.flavors .flavor-stage .flavor-reveal-image{z-index:2}
+.flavors .flavor-stage .flavor-reveal-image[hidden]{display:none}
+.flavors .flavor-aura{display:none}
+.flavors .age{position:absolute;top:16px;right:16px;z-index:4;width:42px;height:42px;display:grid;place-items:center;border:1px solid #ffffff60;border-radius:50%;background:#090a0cc9;color:#fff;font-size:13px}
+.flavors .flavor-copy{min-width:0;opacity:1;transform:none;transition:none;padding:0}
+.flavors .flavor-brand{font-size:clamp(30px,3.3vw,58px);line-height:1.1;margin:0;color:transparent;-webkit-text-stroke:1px #e5b92c}
+.flavors .flavor-name{font-size:clamp(28px,3.3vw,54px);line-height:1.18;margin:0 0 14px;overflow-wrap:anywhere}
+.flavors .flavor-taste{font-size:18px;line-height:1.4;margin:0 0 18px;min-height:26px;color:var(--active-color)}
+.flavors .flavor-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:0 0 14px;padding:0;list-style:none}
+.flavors .flavor-stats li{padding:12px 10px;min-height:82px;border-radius:15px;background:#ffffff04;border:1px solid #ffffff24}
+.flavors .flavor-stats b{display:block;font-size:clamp(16px,1.6vw,23px);white-space:nowrap;line-height:1.35}
+.flavors .flavor-stats span{display:block;font-size:12px;line-height:1.35;color:#adb0b6}
+.flavors .flavor-note{min-height:22px;margin:0 0 12px;font-size:13px;color:#adb0b6}
+.flavors .flavor-warning{font-size:12px;line-height:1.4;margin:0 0 18px;padding-top:12px;border-top:1px solid #ffffff20;color:#adb0b6}
+.flavors .flavor-cta{min-height:46px;padding:12px 26px;font-size:12px;animation:flavor-cta-glow 2.8s ease-in-out infinite}
+@keyframes flavor-cta-glow{50%{box-shadow:0 0 25px #e6b52a25}}
+.flavors .flavor-tabs{grid-column:1/-1;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;justify-content:center;margin:0 auto;width:min(100%,1000px);padding:0}
+.flavors .flavor-tabs button{position:relative;display:flex;align-items:center;justify-content:center;gap:9px;min-width:0;min-height:58px;padding:5px 12px;border:1px solid #ffffff28;border-radius:40px;background:#ffffff04;font-size:12px;line-height:1.25;overflow:hidden;color:#e9e7df;transition:background .25s,border-color .25s}
+.flavors .flavor-tabs button[aria-selected=true]{border-color:#e8bb30;background:#e8bb301a;box-shadow:0 0 22px #e8bb3012}
+.flavors .flavor-tabs button::after{content:'';position:absolute;bottom:0;left:12%;height:2px;width:76%;background:#e8bb30;transform:scaleX(0);transform-origin:left}
+.flavors .flavor-tabs button[aria-selected=true]::after{transform:scaleX(var(--cycle-progress,0))}
+.flavors .flavor-tab-thumb{display:flex;align-items:center;justify-content:center;width:28px;height:46px;flex:none;border-radius:0;overflow:visible;background:none}
+.flavors .flavor-tab-thumb img{display:block;width:100%;height:100%;object-fit:contain;transform:none;clip-path:none}
+.flavors .flavor-mobile{display:none}
+.flavor-page-progress{position:absolute;bottom:0;left:0;width:100%;height:2px;background:linear-gradient(90deg,#f28518,#e7c72a);transform-origin:left;pointer-events:none}
+@media(min-width:761px) and (max-width:1100px){.flavors .flavor-showcase{gap:18px}.flavors .flavor-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.flavors .flavor-stats li{min-height:57px;padding:8px}.flavors .flavor-brand{font-size:35px}.flavors .flavor-name{font-size:34px}.flavors .flavor-taste{margin-bottom:12px;font-size:16px}.flavors .flavor-tabs button{font-size:10px;padding-inline:8px;gap:5px}}
+@media(max-width:760px){
+ .flavors .energy-marquee{height:40px}.flavors .energy-marquee span{font-size:25px}
+ .flavors .flavors-wrap{width:100%;max-width:none;padding:24px 0 38px}
+ .flavors .flavors-head{padding:0 18px;margin-bottom:16px}
+ .flavors .flavors-head h2{display:block;font-size:clamp(26px,7.4vw,40px)}
+ .flavors .flavor-title-line{display:block}.flavors .flavors-head p{margin-top:8px}
+ .flavors .flavor-showcase{display:none}.flavors .flavor-mobile{display:block;opacity:1;transform:none;margin:0}
+ .flavors .flavor-viewport{position:relative;width:100%;overflow:hidden;touch-action:pan-y;user-select:none;padding-block:8px 18px;cursor:grab}
+ .flavors .flavor-viewport:active{cursor:grabbing}
+ .flavors .flavor-track{position:relative;display:flex;gap:14px;width:max-content;max-width:none;overflow:visible;padding:0;margin:0;scroll-snap-type:none;will-change:transform;transition:none}
+ .flavors .flavor-card{position:relative;flex:0 0 min(80vw,320px);width:min(80vw,320px);max-width:none;min-width:0;margin:0;padding:8px;border:1px solid color-mix(in srgb,var(--flavor-color) 45%,#292a2c);border-radius:24px;background:#0e0f12;opacity:1;transform:none;scroll-snap-align:none;box-shadow:none;transition:none;overflow:hidden}
+ .flavors .flavor-card-media{height:min(27svh,230px);aspect-ratio:auto;border-radius:17px;overflow:hidden;background:#08090b}
+ .flavors .flavor-card-media img{width:100%;height:100%;display:block;object-fit:contain;pointer-events:none;transform:none}
+ .flavors .flavor-card-body{padding:13px 7px 8px}
+ .flavors .flavor-card h3{font-size:17px;line-height:1.3;margin:0 0 5px}
+ .flavors .flavor-card-taste{font-size:11px;line-height:1.4;min-height:16px;margin:0 0 12px;color:var(--flavor-color)}
+ .flavors .flavor-card-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;list-style:none;margin:0;padding:0}
+ .flavors .flavor-card-stats li{padding:8px;min-height:51px;border-radius:10px;background:#ffffff04}
+ .flavors .flavor-card-stats b{display:block;font-size:14px;line-height:1.3}
+ .flavors .flavor-card-stats span{display:block;font-size:10px;line-height:1.3;color:#a9adb5}
+ .flavors .flavor-card-note{min-height:15px;margin:9px 0 6px;font-size:10px;color:#a9adb5}
+ .flavors .flavor-card-warning{margin:0;font-size:9px;line-height:1.4;color:#a9adb5}
+ .flavors .age{top:16px;right:16px;width:34px;height:34px;font-size:11px}
+}
+@media(prefers-reduced-motion:reduce){.flavors .energy-marquee>div,.flavors.flavors-ready .flavor-title-line>span,.flavors .flavor-cta{animation:none}.flavors .flavor-title-line>span{transform:none}.flavors{transition:none}.flavor-page-progress{display:none}}

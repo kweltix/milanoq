@@ -1,0 +1,60 @@
+# Локальная обработка без перенаправления на успешный HTTP 200.
+ErrorDocument 404 /404.php
+ErrorDocument 403 /403.php
+
+# Видео передаётся без перекодирования/сжатия; Apache сохраняет byte ranges.
+FileETag MTime Size
+<IfModule mod_deflate.c>
+  <IfModule mod_filter.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/css text/javascript application/javascript application/xml image/svg+xml
+  </IfModule>
+</IfModule>
+
+# Локальный OpenServer отключает mod_deflate: готовые gzip без изменения общего сервера.
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{REQUEST_METHOD} ^(GET|HEAD)$
+    RewriteCond %{REQUEST_URI} !/assets/encoded/
+    RewriteCond %{HTTP:Accept-Encoding} "(^|,)[[:space:]]*gzip([[:space:]]*;|[[:space:]]*,|[[:space:]]*$)" [NC]
+    RewriteCond %{HTTP:Accept-Encoding} "!(^|,)[[:space:]]*gzip[[:space:]]*;[[:space:]]*q=0(\.0*)?[[:space:]]*(,|$)" [NC]
+    RewriteCond %{DOCUMENT_ROOT}/assets/encoded/$1.gz -f
+    RewriteRule ^(.+\.(?:css|js))$ assets/encoded/$1.gz [L]
+</IfModule>
+<IfModule mod_mime.c>
+    AddEncoding gzip .gz
+</IfModule>
+<FilesMatch "\.js\.gz$">
+    ForceType application/javascript
+</FilesMatch>
+<FilesMatch "\.css\.gz$">
+    ForceType text/css
+</FilesMatch>
+
+<IfModule mod_headers.c>
+    <FilesMatch "\.(css|js)(\.gz)?$">
+        Header merge Vary "Accept-Encoding"
+        Header set Cache-Control "no-cache"
+        Header set Cache-Control "public, max-age=31536000, immutable" "expr=%{QUERY_STRING} =~ m#(^|&)v=[A-Za-z0-9_-]+(&|$)#"
+    </FilesMatch>
+    <FilesMatch "\.(webp|png|jpg|jpeg|svg|woff2|mp4|webm)$">
+        Header set Cache-Control "public, max-age=604800"
+    </FilesMatch>
+    <FilesMatch "\.html$">
+        Header set Cache-Control "no-cache"
+    </FilesMatch>
+</IfModule>
+
+<IfModule mod_headers.c>
+    Header onsuccess unset X-Content-Type-Options
+    Header onsuccess unset Referrer-Policy
+    Header onsuccess unset Permissions-Policy
+    Header onsuccess unset X-Frame-Options "expr=%{REQUEST_URI} !~ m#^/api/v1/#"
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+    Header always set X-Frame-Options "DENY" "expr=%{REQUEST_URI} !~ m#^/api/v1/#"
+    <FilesMatch "^(index\.html|403\.php|404\.php)$">
+        Header onsuccess unset Content-Security-Policy
+        Header always set Content-Security-Policy "default-src 'self'; script-src 'self'; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; media-src 'self' blob:; connect-src 'self'; frame-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'"
+    </FilesMatch>
+</IfModule>

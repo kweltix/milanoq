@@ -1,0 +1,17 @@
+.not-found-document{margin:0;background:#07080a;color:#f4f2ec;font:15px/1.6 Manrope,Arial,sans-serif;color-scheme:dark}
+.not-found,.not-found *{box-sizing:border-box}
+.not-found{position:relative;display:grid;place-items:center;min-height:65vh;min-height:65svh;padding:60px 24px;background:radial-gradient(ellipse at 50% 35%,rgba(242,194,48,.07),transparent 65%),#07080a;color:#f4f2ec;text-align:center;isolation:isolate}
+.not-found-document .not-found{min-height:100vh;min-height:100svh}
+.not-found-shell{width:min(100%,640px)}
+.not-found-brand{display:block;font:500 26px/1.2 Cinzel,Georgia,serif;letter-spacing:.14em}
+.not-found-brand small{display:block;margin-top:8px;color:#f2c230;font:700 9px/1.4 Manrope,Arial,sans-serif;letter-spacing:.3em}
+.not-found-code{margin:22px 0 12px;font:800 clamp(100px,19vw,180px)/1 Unbounded,Arial,sans-serif;letter-spacing:-.07em;color:#f2c230;text-shadow:0 0 70px rgba(242,194,48,.12)}
+.not-found h1{margin:0;font:800 clamp(24px,4vw,38px)/1.3 Unbounded,Arial,sans-serif;letter-spacing:-.025em;overflow-wrap:anywhere}
+.not-found-copy{max-width:440px;margin:20px auto 28px;color:#a4a9ae;font:400 15px/1.8 Manrope,Arial,sans-serif}
+.not-found-home{display:inline-flex;align-items:center;justify-content:center;gap:28px;min-height:52px;max-width:100%;padding:14px 28px;border:1px solid #f2c230;border-radius:999px;background:linear-gradient(115deg,#ffe58a,#f2c230);color:#111;font:800 13px/1.5 Manrope,Arial,sans-serif;text-decoration:none;transition:box-shadow .25s ease,transform .25s ease}
+.not-found-home:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(242,194,48,.15)}
+.not-found-home span{font-size:19px}
+.not-found-language{position:absolute;top:24px;right:24px;min-width:44px;min-height:44px;border:1px solid #42413a;border-radius:50%;background:transparent;color:#f4f2ec;font:700 12px Manrope,Arial,sans-serif;cursor:pointer}
+.not-found-home:focus-visible,.not-found-language:focus-visible{outline:2px solid #f2c230;outline-offset:6px}
+@media(max-width:760px){.not-found{padding:38px 20px}.not-found-copy{font-size:14px}.not-found-language{top:16px;right:16px}}
+@media(prefers-reduced-motion:reduce){.not-found-home{transition:none}.not-found-home:hover{transform:none}}

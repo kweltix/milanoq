@@ -1,0 +1,42 @@
+# Machine-specific secrets and credentials
+/.env
+/.env.*
+!/.env.example
+/app/config.local.php
+*.key
+*.pem
+*.p12
+*.pfx
+*.log
+
+# Runtime uploads, receipts and sessions are NOT source code
+/storage/*
+!/storage/.htaccess
+**/sess_*
+/tests/runtime-sessions/
+*.sqlite
+*.sqlite3
+*.db
+*.sql.gz
+*.sql.zip
+
+# Local audit material may contain participant data or screenshots
+/docs/
+/output/
+/backups/
+/design-preview/
+/node_modules/
+/vendor/
+/.tools/
+/.vscode/
+/.idea/
+Thumbs.db
+.DS_Store
+
+# Never auto-track arbitrary database exports; migrations are versioned
+/database/*.sql
+/database/*.zip
+/database/*.gz
+/database/*snapshot*.json
+
+assets/encoded/

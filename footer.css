@@ -1,0 +1,34 @@
+/* Scoped footer styling: no changes to other sections or their geometry. */
+.site-footer{position:relative;padding:54px 0 28px;background:radial-gradient(ellipse at 8% 0,rgba(242,194,48,.055),transparent 55%),#08090b;border-top:0}
+.site-footer::before{content:"";position:absolute;inset:0 0 auto;height:1px;background:linear-gradient(90deg,transparent,rgba(242,194,48,.65),rgba(242,194,48,.12),transparent);box-shadow:0 0 18px rgba(242,194,48,.12);pointer-events:none}
+.site-footer .footer-main{display:grid;grid-template-columns:.9fr 2fr;gap:clamp(24px,5vw,72px);padding-bottom:36px}
+.site-footer .footer-brand{min-width:0;display:flex;flex-direction:column;align-items:flex-start}
+.site-footer .footer-brand .logo{font-size:32px;line-height:1.15;color:var(--t)}
+.site-footer .footer-brand-caption{font-size:10px;letter-spacing:.33em;color:var(--g);margin-top:7px;font-weight:800}
+.site-footer .footer-brand p{margin-top:18px;font-size:13px;color:var(--m)}
+.site-footer .site-contacts{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,56px);min-width:0;max-width:none;margin:0;padding:0;font-size:14px}
+.site-footer .footer-reach,.site-footer .footer-location{min-width:0}
+.site-footer .footer-contact-title{font-family:Manrope,Arial,sans-serif;font-size:11px;line-height:1.5;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--m);margin:0 0 15px}
+.site-footer .footer-contact-item{display:flex;align-items:flex-start;gap:11px;color:var(--t);line-height:1.7;overflow-wrap:anywhere;min-width:0}
+.site-footer a.footer-contact-item{width:fit-content;max-width:100%;min-height:38px;padding:5px 0;transition:color .2s ease}
+.site-footer .footer-location .footer-contact-item{padding-top:5px;color:#c1c3c4}
+.site-footer .footer-contact-item svg{flex:0 0 17px;width:17px;height:17px;margin-top:4px;stroke:var(--g);stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.site-footer a.footer-contact-item:hover{color:var(--g2)}
+.site-footer a:focus-visible{outline:2px solid var(--g);outline-offset:5px;border-radius:3px}
+.site-footer .footer-bottom{display:flex;justify-content:space-between;align-items:center;gap:20px;padding-top:22px;border-top:1px solid rgba(255,255,255,.08);font-size:11px}
+.site-footer .footer-notices{display:flex;gap:12px;align-items:center;line-height:1.5}
+.site-footer .footer-notices img{object-fit:contain;flex-shrink:0}
+.site-footer .b18{flex-shrink:0;width:36px;height:36px;font-size:12px;border-color:rgba(242,194,48,.35);color:var(--g2)}
+@media(max-width:760px){
+ .site-footer{padding:34px 0 26px}
+ .site-footer .footer-main{grid-template-columns:1fr;gap:26px;padding-bottom:26px}
+ .site-footer .footer-brand .logo{font-size:28px}
+ .site-footer .footer-brand p{margin-top:12px}
+ .site-footer .site-contacts{grid-template-columns:1fr;gap:22px}
+ .site-footer .footer-contact-title{margin-bottom:9px}
+ .site-footer a.footer-contact-item{min-height:44px;padding:8px 0}
+ .site-footer .footer-location .footer-contact-item{max-width:380px}
+ .site-footer .footer-bottom{flex-direction:column;align-items:flex-start;gap:16px;padding-top:20px}
+ .site-footer .footer-notices{order:-1}
+}
+@media(prefers-reduced-motion:reduce){.site-footer a.footer-contact-item{transition:none}}

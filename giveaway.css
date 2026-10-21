@@ -1,0 +1,160 @@
+/* Giveaway section: responsive desktop/mobile festival artwork supplied by the owner. */
+.pz{
+  position:relative;
+  isolation:isolate;
+  min-height:clamp(720px,46vw,900px);
+  padding:0!important;
+  display:flex;
+  align-items:center;
+  overflow:hidden;
+  border:0!important;
+  color:#f8f5ef;
+  background:#08090b url("assets/giveaway-bg-desktop.webp") center/cover no-repeat;
+}
+.pz:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  background:
+    linear-gradient(90deg,rgba(4,5,7,.92) 0%,rgba(4,5,7,.72) 36%,rgba(4,5,7,.28) 60%,rgba(4,5,7,.72) 100%),
+    linear-gradient(0deg,rgba(4,5,7,.88),transparent 48%,rgba(4,5,7,.18));
+}
+.pz .pz-g{
+  width:min(1760px,calc(100% - clamp(48px,8vw,180px)));
+  grid-template-columns:minmax(0,1.15fr) minmax(390px,.85fr);
+  gap:clamp(48px,7vw,140px);
+  align-items:center;
+  padding:72px 0;
+}
+.pz .pz-c{
+  padding:0;
+  overflow:visible;
+  border:0;
+  border-radius:0;
+  color:#f8f5ef;
+  background:transparent!important;
+  box-shadow:none;
+}
+.pz .pz-c h2{
+  display:grid;
+  margin:0;
+  font-size:clamp(50px,5.6vw,104px);
+  line-height:.88;
+  letter-spacing:-.055em;
+  text-shadow:0 8px 34px rgba(0,0,0,.55);
+}
+.pz .pz-c h2 span:last-child{
+  color:transparent;
+  -webkit-text-stroke:1.7px #f4c430;
+  text-shadow:none;
+}
+.pz .pz-p{
+  max-width:650px;
+  margin-top:26px;
+  color:#f0ede6;
+  font-size:clamp(15px,1.12vw,19px);
+  line-height:1.55;
+  text-shadow:0 2px 12px #000;
+}
+.pz .pz-t{margin:20px 0 0;gap:8px}
+.pz .pz-t li{
+  padding:8px 14px;
+  border-color:rgba(255,255,255,.42);
+  color:#fff;
+  background:rgba(5,6,8,.54);
+  backdrop-filter:blur(10px);
+}
+.pz .cd{margin:22px 0;gap:8px}
+.pz .cd div{
+  min-width:70px;
+  border-color:rgba(255,255,255,.24);
+  color:#fff;
+  background:rgba(5,6,8,.62);
+  backdrop-filter:blur(10px);
+}
+.pz .cd b{color:#fff}.pz .cd span{color:#d0cdc6}
+.pz .pz-b{min-height:58px;padding:13px 30px;border-radius:14px}
+.pz .pz-r{display:grid;gap:16px}
+.pz .pz-k,.pz .pz-s li{
+  border-color:rgba(255,255,255,.22);
+  color:#fff;
+  background:rgba(8,9,12,.74);
+  box-shadow:0 24px 80px rgba(0,0,0,.32);
+  backdrop-filter:blur(15px);
+}
+.pz .pz-k{padding:28px;border-radius:24px}.pz .pz-k h3{font-size:18px}.pz .pz-k p{color:#d5d2cb}
+.pz .pz-s{gap:12px}.pz .pz-s li{min-height:70px;padding:14px 18px;border-radius:18px}
+.pz .pz-s b{background:linear-gradient(135deg,#ffe37a,#f4c430);color:#111}.pz .pz-s span{font-weight:800}
+
+/* This branded section stays dark in both site themes for guaranteed contrast. */
+[data-theme=light] .pz{color:#fff}
+[data-theme=light] .pz .pz-c,[data-theme=light] .pz .pz-p,[data-theme=light] .pz .pz-k,[data-theme=light] .pz .pz-s li{color:#fff}
+[data-theme=light] .pz .pz-k p{color:#d5d2cb}
+[data-theme=light] .pz .cd b{color:#fff}
+
+@media(max-width:1000px){
+  .pz .pz-g{width:calc(100% - 48px);grid-template-columns:minmax(0,1.05fr) minmax(330px,.95fr);gap:28px}
+  .pz .pz-c h2{font-size:clamp(45px,6.8vw,70px)}
+}
+
+@media(max-width:760px){
+  .pz{
+    min-height:1220px;
+    align-items:flex-end;
+    background-image:url("assets/giveaway-bg-mobile.webp");
+    background-position:center top;
+  }
+  .pz:before{
+    background:linear-gradient(0deg,rgba(5,6,8,.84) 0%,rgba(5,6,8,.82) 36%,rgba(5,6,8,.72) 61%,rgba(5,6,8,.16) 88%,rgba(5,6,8,.2) 100%);
+  }
+  .pz .pz-g{
+    width:calc(100% - 32px);
+    grid-template-columns:1fr;
+    gap:20px;
+    padding:280px 0 32px;
+    transform:translateY(-58px);
+  }
+  .pz .pz-c h2{font-size:clamp(42px,13vw,59px);line-height:.9}
+  .pz .pz-p{margin-top:18px;font-size:14px;line-height:1.5}
+  .pz .pz-t{gap:6px;margin-top:16px}.pz .pz-t li{padding:6px 10px;font-size:10px}
+  .pz .cd{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin:18px 0}
+  .pz .cd div{min-width:0;padding:9px 2px}.pz .cd b{font-size:22px}.pz .cd span{font-size:8px}
+  .pz .pz-b{width:100%;min-height:54px;margin-top:24px;padding-inline:14px}
+  .pz .pz-k,.pz .pz-s li{background:rgba(8,9,12,.66)}
+  .pz .pz-k{padding:20px;border-radius:18px}.pz .pz-k h3{font-size:16px}
+  .pz .pz-s{gap:9px}.pz .pz-s li{min-height:58px;padding:10px 13px;border-radius:15px;font-size:12px}
+  .pz .pz-s b{width:34px;height:34px}
+}
+
+@media(max-width:380px){
+  .pz{min-height:1160px}.pz .pz-g{padding-top:270px}.pz .pz-c h2{font-size:40px}
+}
+
+@media(min-width:761px){
+  #promo .pz-b{margin-top:24px}
+}
+
+/* Owner's mobile composition, 16 Oct: title / clear cyclist / description.
+   Keep the 941x1672 artwork at its natural ratio, independent of CMS content
+   height. The cyclist occupies image y=408..600; copy begins below that band.
+   ID scoping overrides historical final-design spacing without changing PC. */
+@media(max-width:760px){
+  #promo.pz{
+    min-height:0;
+    padding:24px 0 32px!important;
+    background-size:100% auto;
+    background-position:center top;
+  }
+  #promo .pz-g{position:relative;z-index:1;padding:0;transform:none;gap:22px}
+  #promo .pz-c{
+    display:grid;
+    grid-template-columns:minmax(0,1fr);
+    grid-template-rows:minmax(calc(70vw - 24px),auto);
+    align-items:start;
+  }
+  #promo .pz-c h2{font-size:clamp(32px,10.8vw,72px);line-height:.94;margin:0}
+  #promo .pz-p{margin:0;font-size:14px;line-height:1.5}
+  #promo .pz-t{margin:14px 0 0}
+  #promo .pz-b{margin-top:22px}
+}
